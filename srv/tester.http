@@ -1,0 +1,147 @@
+###Get the service document
+http://localhost:4004/odata/v4/CatalogService
+
+
+###Get service metadata document
+http://localhost:4004/odata/v4/CatalogService/$metadata
+
+
+###Get the employee data - All
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet
+
+
+###Pagination - chunk by chunk
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet?$top=1&$skip=3
+
+
+###Load Single Employee data
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet/02BD2137-0890-1EEA-A6C2-BB55C197E7FB
+
+
+###Load data by filtering
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet?$filter=Currency_code eq 'USD'
+
+
+###Filter with pattern search
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet?$filter=contains(nameFirst,'Su')
+
+
+###Get the count of employees
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet/$count
+
+
+###Create a new employee
+POST http://localhost:4004/odata/v4/CatalogService/EmployeeSet
+Content-Type: application/json
+
+
+{
+  "nameFirst": "Chistiano",
+  "nameMiddle": null,
+  "nameLast": "Ronaldo",
+  "nameInitials": null,
+  "sex": "M",
+  "language": "E",
+  "phoneNumber": null,
+  "email": null,
+  "loginName": "RONALDOCH",
+  "Currency_code": "EUR",
+  "salaryAmount": 200000,
+  "accountNumber": "7766554433",
+  "bankId": "12100035",
+  "bankName": "RBS"
+}
+
+
+###Get the created employee data
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet/c6aab8e8-ae42-4b1d-828f-d5fae5c60b1f
+
+
+
+
+###Update salary of employee
+PATCH http://localhost:4004/odata/v4/CatalogService/EmployeeSet/c6aab8e8-ae42-4b1d-828f-d5fae5c60b1f
+Content-Type: application/json
+
+
+{
+    "salaryAmount": 999999,
+    "Currency_code": "USD"
+}
+
+
+###Remove data from DB
+DELETE http://localhost:4004/odata/v4/CatalogService/EmployeeSet/c6aab8e8-ae42-4b1d-828f-d5fae5c60b1f
+
+
+
+###Get the employee data - All
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet
+
+
+###Create a new employee
+POST http://localhost:4004/odata/v4/CatalogService/EmployeeSet
+Content-Type: application/json
+
+
+{
+  "nameFirst": "Chistiano",
+  "nameMiddle": null,
+  "nameLast": "Ronaldo",
+  "nameInitials": null,
+  "sex": "M",
+  "language": "E",
+  "phoneNumber": null,
+  "email": null,
+  "loginName": "RONALDOCH",
+  "Currency_code": "EUR",
+  "salaryAmount": 200000,
+  "accountNumber": "7766554433",
+  "bankId": "12100035",
+  "bankName": "RBS"
+}
+
+###Lazy Loading
+http://localhost:4004/odata/v4/CatalogService/Products
+
+
+###Get Single product
+http://localhost:4004/odata/v4/CatalogService/Products/74867AD200E41EDBA5D8B06B26EC6052/To_Items
+
+
+###Get All Purchase orders
+http://localhost:4004/odata/v4/CatalogService/POs
+
+
+###Get Single Purchase order
+http://localhost:4004/odata/v4/CatalogService/POs/74867AD200E41EDBA5D8B0C98DCC4052
+
+
+###Get PO and its items in a single call $expand
+http://localhost:4004/odata/v4/CatalogService/POs/74867AD200E41EDBA5D8B0C98DCC4052?$expand=Items
+
+
+###Call function
+http://localhost:4004/odata/v4/CatalogService/getLargestOrder()
+
+
+###Instance bound action
+POST http://localhost:4004/odata/v4/CatalogService/POs/74867AD200E41EDBA5D8B0C98DCC4052/CatalogService.boost
+Content-Type: application/json
+
+{}
+
+
+###Get Single Purchase order
+http://localhost:4004/odata/v4/CatalogService/POs/74867AD200E41EDBA5D8B0C98DCC4052
+
+###Update salary of employee
+PATCH http://localhost:4004/odata/v4/CatalogService/EmployeeSet/02BD2137-0890-1EEA-A6C2-BB55C19787FB
+Content-Type: application/json
+
+
+{
+    "salaryAmount": 100000,
+    "Currency_code": "USD"
+}
+
